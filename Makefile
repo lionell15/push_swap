@@ -4,8 +4,17 @@ SRCS	=	push_swap.c \
 			src/checks.c \
 			src/quick_sort.c \
 			src/utils.c \
+			src/utils2.c \
 			src/short_solution.c \
-			src/sort_stack.c
+			src/sort_stack.c \
+			src/print_utils.c \
+			src/divide_stack.c \
+			src/push_back.c \
+			src/command_sort.c \
+			src/swap_elements.c \
+			src/swap.c \
+			src/comb.c \
+			src/comb2.c
 OBJS	=	${SRCS:.c=.o}
 HEADER	=	-Iincludes
 CC		=	gcc

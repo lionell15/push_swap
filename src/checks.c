@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checks.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lespinoz <lespinoz@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/01 14:27:55 by lespinoz          #+#    #+#             */
+/*   Updated: 2022/03/01 14:27:57 by lespinoz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 static int	check_overflow(char *str)
@@ -19,8 +31,8 @@ int	check_av(char *str)
 {
 	int	i;
 	int	len;
+
 	i = 0;
-	//if (str[i] == '-' && !NUM(str[i + 1]))
 	if (str[i] == '-' && !ft_isdigit(str[i + 1]))
 		return (1);
 	if (str[i] == '-' && ft_isdigit(str[i + 1]))
@@ -28,7 +40,7 @@ int	check_av(char *str)
 	len = ft_strlen(&str[i]);
 	if (len > 10)
 		return (1);
-	while(str[i])
+	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
 			return (1);
@@ -39,12 +51,12 @@ int	check_av(char *str)
 	return (0);
 }
 
-static int	*array_from_list(t_stack *stack, int len)
+int	*array_from_list(t_stack *stack, int len)
 {
 	int		*array;
 	int		i;
 
-	array = (int*)malloc(sizeof(int) * len);
+	array = (int *)malloc(sizeof(int) * len);
 	i = 0;
 	while (i < len)
 	{
@@ -55,16 +67,17 @@ static int	*array_from_list(t_stack *stack, int len)
 	return (array);
 }
 
-void check_doubles(t_stack **stack)
+void	check_doubles(t_stack **stack)
 {
 	int		*array;
 	int		len;
-	int 	i;
+	int		i;
+
 	i = 0;
 	len = get_stack_len(*stack);
 	array = array_from_list(*stack, len);
 	quick_sort(array, 0, len - 1);
-	while ( i < len - 1)
+	while (i < len - 1)
 	{
 		if (array[i] >= array[i + 1])
 		{
@@ -75,4 +88,14 @@ void check_doubles(t_stack **stack)
 		i++;
 	}
 	free(array);
+}
+
+char	*add_to_string(char *to, char *add)
+{
+	char	*del;
+
+	del = to;
+	to = ft_strjoin(to, add);
+	ft_strdel(&del);
+	return (to);
 }

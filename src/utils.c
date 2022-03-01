@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lespinoz <lespinoz@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/01 13:26:08 by lespinoz          #+#    #+#             */
+/*   Updated: 2022/03/01 13:26:11 by lespinoz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 t_com	*get_new_result(void)
@@ -6,7 +18,7 @@ t_com	*get_new_result(void)
 	int		i;
 
 	i = 0;
-	new = (t_com*)malloc(sizeof(t_com));
+	new = (t_com *)malloc(sizeof(t_com));
 	new->rotator = 0;
 	new->final = ft_strdup("\0");
 	return (new);
@@ -20,7 +32,7 @@ void	ft_strdel(char **as)
 	*as = NULL;
 }
 
-int		ft_strequ(char const *s1, char const *s2)
+int	ft_strequ(char const *s1, char const *s2)
 {
 	if (s1 == NULL || s2 == NULL)
 		return (0);
@@ -51,7 +63,7 @@ void	print_result(char *origin)
 {
 	char	**tmp;
 	char	*result;
-	int 	i;
+	int		i;
 
 	i = 0;
 	result = ft_strdup("\0");
@@ -64,9 +76,9 @@ void	print_result(char *origin)
 			i = add_ra_rra(tmp, &result, i);
 		if (tmp[i] && (ft_strequ(tmp[i], "rb") || ft_strequ(tmp[i], "rrb")))
 			i = add_rb_rrb(tmp, &result, i);
-		if (tmp[i] && !(ft_strequ(tmp[i], "pa") || ft_strequ(tmp[i], "pb") ||
-			ft_strequ(tmp[i], "ra") || ft_strequ(tmp[i], "rb") ||
-			ft_strequ(tmp[i], "rra") || ft_strequ(tmp[i], "rrb")))
+		if (tmp[i] && !(ft_strequ(tmp[i], "pa") || ft_strequ(tmp[i], "pb")
+				|| ft_strequ(tmp[i], "ra") || ft_strequ(tmp[i], "rb")
+				|| ft_strequ(tmp[i], "rra") || ft_strequ(tmp[i], "rrb")))
 			i = add_others(tmp, &result, i);
 	}
 	ft_putstr_fd(result, 1);

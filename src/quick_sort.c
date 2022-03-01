@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   quick_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lespinoz <lespinoz@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/01 14:47:23 by lespinoz          #+#    #+#             */
+/*   Updated: 2022/03/01 14:47:29 by lespinoz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
-static void	ft_swap(int *a, int *b)
+void	ft_swap(int *a, int *b)
 {
 	int	tmp;
 
@@ -33,10 +45,11 @@ static int	partition(int *stack1, int start, int end)
 
 void	quick_sort(int *stack1, int start, int end)
 {
-	int	stack2[end + 1];
+	int	*stack2;
 	int	top;
 	int	pivot;
 
+	stack2 = malloc(end + 1);
 	top = -1;
 	stack2[++top] = start;
 	stack2[++top] = end;

@@ -12,33 +12,27 @@
 
 #include "push_swap.h"
 
-int error(void)
-{
-	write(1, "Error: ", 7);
-	return (0);
-}
-
 int	main(int ac, char **av)
 {
-	t_stack		*stackA;
-	t_stack		*stackB;
+	t_stack		*stack_a;
+	t_stack		*stack_b;
 	t_com		*result;
 	int			len;
 
-	stackA = args_to_stack(ac, av);
-	if (!stackA)
+	stack_a = args_to_stack(ac, av);
+	if (!stack_a)
 		error();
-	len = get_stack_len(stackA);
+	len = get_stack_len(stack_a);
 	result = get_new_result();
 	if (len < 4)
 	{
-		short_solution(&stackA, len);
-		stack_del(&stackA);
+		short_solution(&stack_a, len);
+		stack_del(&stack_a);
 	}
 	else
-		sort_stack(&stackA, &stackB, &result, len);
+		sort_stacks(&stack_a, &stack_b, &result, len);
 	print_result(result->final);
-	stack_del(&stackA);
+	stack_del(&stack_a);
 	free(result);
-	return(0);
+	return (0);
 }
