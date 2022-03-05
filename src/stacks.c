@@ -47,7 +47,7 @@ t_stack	*new_node(void)
 	t_stack	*first_element;
 
 	first_element = (t_stack *)malloc(sizeof(t_stack));
-	first_element->next = 0;
+	first_element->num = 0;
 	first_element->diff = 1;
 	first_element->next = NULL;
 	return (first_element);
