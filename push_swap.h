@@ -41,7 +41,8 @@ int		check_av(char *str);
 t_com	*get_new_result(void);
 void	print_result(char *sr);
 void	short_solution(t_stack **stack, int len);
-void	sort_stacks(t_stack **stack1, t_stack **stack2, t_com **result, int len);
+void	sort_stacks(t_stack **stack1, t_stack **stack2, t_com **result,
+			int len);
 int		ft_strequ(char const *s1, char const *s2);
 int		add_pa_pb(char **origin, char **res, int i);
 int		add_ra_rra(char **origin, char **res, int i);
