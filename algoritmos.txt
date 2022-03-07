@@ -1,0 +1,81 @@
+algoritmo para 2 parametros
+	if (1 > 2)
+		sa;
+
+algoritmo para 3 parametros
+
+	if (1 < 2 && 2 < 3)
+		exit;
+	if (1 > 2 && 2 < 3 && 1 < 3)
+		sa;
+	else if (1 < 2 && 2 > 3	&& 1 < 3)
+		rra;
+		sa;
+	else if (1 > 2 && 1 > 3 && 2 < 3)
+		ra;
+	else if (1 < 2 && 1 > 3 && 2 > 3)
+		rra;
+	else if (1 > 2 && 2 > 3)
+		ra;
+		sa;
+
+algoritmo para >3 parametros
+
+	if (len == 2 || len == 3)
+		exit ;
+
+	if (stack1->diff == 1)
+		divide = div_stack_a;
+	else
+		divide = div_stack_b;
+
+	if (result->rotator == 1)
+		rotate_back(divide);
+
+	if (stack1->diff == 1 && (len / 2 == 3 || len / 2 == 2))
+		swap_elements;
+	else if (stack1->diff == 2 && (len / 2 == 3 || len / 2 == 2))
+		swap_elements;
+
+	if (stack1->diff != 1)
+		sort_stacks(len / 2);
+	else
+		sort_stacks(len - len / 2);
+
+	if (stack1->diff == 1)
+		sort_stacks(len / 2);
+	else
+		sort_stacks(len - len / 2);
+
+	if (stack1->diff == 1)
+		push_back(len / 2);
+	else
+		push_back(len - len / 2);
+
+Se divide repetidamente la pila A alrededor de la mediana real, se coloca los números más bajos en la pila B y se mantiene los números más altos en la pila A. Las particiones se registraron en la pila B cada vez que ocurrió este proceso de la siguiente manera:
+
+Comienzo
+pila A: 1 7 9 4 10 3 2 11 25 (mediana = 7)
+Pila B:
+
+Primera división:
+pila A: 9 10 11 25
+Pila B: 2 3 4 7 1
+
+Segunda división:
+pila A: 25 11 10
+pila B: 2 3 4 7 1 | 9
+
+| = partición
+
+Una vez que la pila A se redujo a tres o menos números, se clasificó. La pila B luego encontraría la mediana de los números hasta la última partición en la pila B, y empujaría los valores más altos a la pila A hasta que alcanzara la siguiente partición en la pila B.
+
+Si se empujaran tres o menos números a la pila A, estos números se ordenarían usando los comandos de intercambio y rotación, y también se marcaría una partición al final de la pila A, lo que indica que la pila A está ordenada hasta este punto. La pila B luego empujaría hacia A nuevamente como se indicó anteriormente.
+
+Si se pasaran más de tres números de B a A, la pila A repetiría el proceso desde el principio, dividiendo repetidamente alrededor de una mediana de todos los números después de la última partición en A, manteniendo los valores más altos y empujando los valores más bajos hacia B.
+
+Todo el proceso anterior se repetiría hasta que se ordenara la pila A.
+
+Si bien muchos proyectos implementaron un algoritmo similar de forma recursiva, empleé un método más rápido y menos costoso desde el punto de vista computacional al calcular el problema de forma iterativa. Dos pilas adicionales mantuvieron un registro de la posición de las particiones y permitieron que el algoritmo supiera cuándo dejar de empujar sobre la pila B o la pila A, y desde qué punto calcular las medianas. Basé esta implementación en una idea que leí aquí.
+
+
