@@ -12,27 +12,27 @@
 
 #include "../push_swap.h"
 
-int	rot_stacks(t_stack **stack1, t_stack **stack2, t_com **result, int len)
+int	div_stacks(t_stack **stack1, t_stack **stack2, t_com **result, int len)
 {
-	int	rot;
+	int	div;
 
 	if ((*stack1)->diff == 1)
-		rot = div_stack_a(stack1, stack2, result, len);
+		div = div_stack_a(stack1, stack2, result, len);
 	else
-		rot = div_stack_b(stack1, stack2, result, len);
-	return (rot);
+		div = div_stack_b(stack1, stack2, result, len);
+	return (div);
 }
 
 void	sort_stacks(t_stack **stack1, t_stack **stack2, t_com **result,
 	int len)
 {
-	int	rot;
+	int	div;
 
 	if (len == 2 || len == 3)
 		return ;
-	rot = rot_stacks(stack1, stack2, result, len);
+	div = div_stacks(stack1, stack2, result, len);
 	if ((*result)->rotator == 1)
-		rotate_back(stack1, result, rot);
+		rotate_back(stack1, result, div);
 	if ((*stack1)->diff == 1 && (len / 2 == 3 || len / 2 == 2))
 		swap_elements(stack1, stack2, result, len);
 	else if ((*stack1)->diff == 2 && (len / 2 == 3 || len / 2 == 2))
