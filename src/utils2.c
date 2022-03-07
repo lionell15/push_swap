@@ -26,6 +26,22 @@ int	error(void)
 	return (0);
 }
 
+int	*array_from_list(t_stack *stack, int len)
+{
+	int		*array;
+	int		i;
+
+	array = (int *)malloc(sizeof(int) * len);
+	i = 0;
+	while (i < len)
+	{
+		array[i] = stack->num;
+		stack = stack->next;
+		i++;
+	}
+	return (array);
+}
+
 int	find_mid_value(t_stack *stack, int len)
 {
 	int		*array;
@@ -37,4 +53,14 @@ int	find_mid_value(t_stack *stack, int len)
 	mid_value = array[len / 2];
 	free(array);
 	return (mid_value);
+}
+
+char	*add_to_string(char *to, char *add)
+{
+	char	*del;
+
+	del = to;
+	to = ft_strjoin(to, add);
+	ft_strdel(&del);
+	return (to);
 }

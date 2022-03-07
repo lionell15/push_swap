@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-t_com	*get_new_result(void)
+t_com	*new_result(void)
 {
 	t_com	*new;
 	int		i;

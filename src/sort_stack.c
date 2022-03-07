@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-int	aux(t_stack **stack1, t_stack **stack2, t_com **result, int len)
+int	rot_stacks(t_stack **stack1, t_stack **stack2, t_com **result, int len)
 {
 	int	rot;
 
@@ -30,7 +30,7 @@ void	sort_stacks(t_stack **stack1, t_stack **stack2, t_com **result,
 
 	if (len == 2 || len == 3)
 		return ;
-	rot = aux(stack1, stack2, result, len);
+	rot = rot_stacks(stack1, stack2, result, len);
 	if ((*result)->rotator == 1)
 		rotate_back(stack1, result, rot);
 	if ((*stack1)->diff == 1 && (len / 2 == 3 || len / 2 == 2))

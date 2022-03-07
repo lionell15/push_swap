@@ -16,23 +16,20 @@ int	main(int ac, char **av)
 {
 	t_stack		*stack_a;
 	t_stack		*stack_b;
-	t_com		*result;
-	int			len;
+	t_com		*combi_result;
+	int			size_args;
 
 	stack_a = args_to_stack(ac, av);
 	if (!stack_a)
 		error();
-	len = get_stack_len(stack_a);
-	result = get_new_result();
-	if (len < 4)
-	{
-		short_solution(&stack_a, len);
-		stack_del(&stack_a);
-	}
+	size_args = get_stack_len(stack_a);
+	combi_result = new_result();
+	if (size_args > 3)
+		sort_stacks(&stack_a, &stack_b, &combi_result, size_args);
 	else
-		sort_stacks(&stack_a, &stack_b, &result, len);
-	print_result(result->final);
+		short_solution(&stack_a, size_args);
+	print_result(combi_result->final);
 	stack_del(&stack_a);
-	free(result);
+	free(combi_result);
 	return (0);
 }

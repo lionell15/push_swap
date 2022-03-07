@@ -42,7 +42,7 @@ void	stack_del(t_stack **stack)
 	*stack = NULL;
 }
 
-t_stack	*new_node(void)
+t_stack	*create_node(void)
 {
 	t_stack	*first_element;
 
@@ -60,7 +60,7 @@ t_stack	*args_to_stack(int ac, char **av)
 	int			index;
 
 	index = 1;
-	first_element = new_node();
+	first_element = create_node();
 	aux = first_element;
 	while (index < ac)
 	{
@@ -72,7 +72,7 @@ t_stack	*args_to_stack(int ac, char **av)
 		aux->num = ft_atoi(av[index]);
 		if (index < ac -1)
 		{
-			aux->next = new_node();
+			aux->next = create_node();
 			aux = aux->next;
 			aux->diff = 1;
 		}

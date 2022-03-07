@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-void	compa(t_stack **stack, t_com **res, int num_com, int num_com_f)
+void	combinator(t_stack **stack, t_com **res, int num_com, int num_com_f)
 {
 	if (get_stack_len(*stack) > 3)
 	{
@@ -47,22 +47,22 @@ void	swap_three_a(t_stack **stack, t_com **res)
 	else if ((*stack)->num > (*stack)->next->num
 		&& (*stack)->next->num < (*stack)->next->next->num
 		&& (*stack)->num < (*stack)->next->next->num)
-		compa(stack, res, 1, 0);
+		combinator(stack, res, 1, 0);
 	else if ((*stack)->num < (*stack)->next->num
 		&& (*stack)->next->num > (*stack)->next->next->num
 		&& (*stack)->num < (*stack)->next->next->num)
-		compa(stack, res, 2, 6);
+		combinator(stack, res, 2, 6);
 	else if ((*stack)->num > (*stack)->next->num
 		&& (*stack)->num > (*stack)->next->next->num
 		&& (*stack)->next->num < (*stack)->next->next->num)
-		compa(stack, res, 3, 7);
+		combinator(stack, res, 3, 7);
 	else if ((*stack)->num < (*stack)->next->num
 		&& (*stack)->num > (*stack)->next->next->num
 		&& (*stack)->next->num > (*stack)->next->next->num)
-		compa(stack, res, 4, 8);
+		combinator(stack, res, 4, 8);
 	else if ((*stack)->num > (*stack)->next->num
 		&& (*stack)->next->num > (*stack)->next->next->num)
-		compa(stack, res, 5, 9);
+		combinator(stack, res, 5, 9);
 }
 
 void	swap_three_b(t_stack **stack, t_com **res)
@@ -73,22 +73,22 @@ void	swap_three_b(t_stack **stack, t_com **res)
 	else if ((*stack)->num < (*stack)->next->num
 		&& (*stack)->num > (*stack)->next->next->num
 		&& (*stack)->next->num > (*stack)->next->next->num)
-		compa(stack, res, 1, 0);
+		combinator(stack, res, 1, 0);
 	else if ((*stack)->num > (*stack)->next->num
 		&& (*stack)->num > (*stack)->next->next->num
 		&& (*stack)->next->num < (*stack)->next->next->num)
-		compa(stack, res, 2, 6);
+		combinator(stack, res, 2, 6);
 	else if ((*stack)->num < (*stack)->next->num
 		&& (*stack)->next->num > (*stack)->next->next->num
 		&& (*stack)->num < (*stack)->next->next->num)
-		compa(stack, res, 3, 7);
+		combinator(stack, res, 3, 7);
 	else if ((*stack)->num > (*stack)->next->num
 		&& (*stack)->next->num < (*stack)->next->next->num
 		&& (*stack)->num < (*stack)->next->next->num)
-		compa(stack, res, 4, 8);
+		combinator(stack, res, 4, 8);
 	else if ((*stack)->num < (*stack)->next->num
 		&& (*stack)->next->num < (*stack)->next->next->num)
-		compa(stack, res, 5, 9);
+		combinator(stack, res, 5, 9);
 }
 
 void	swap_three(t_stack **stack, t_com **result)

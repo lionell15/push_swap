@@ -51,22 +51,6 @@ int	check_av(char *str)
 	return (0);
 }
 
-int	*array_from_list(t_stack *stack, int len)
-{
-	int		*array;
-	int		i;
-
-	array = (int *)malloc(sizeof(int) * len);
-	i = 0;
-	while (i < len)
-	{
-		array[i] = stack->num;
-		stack = stack->next;
-		i++;
-	}
-	return (array);
-}
-
 void	check_doubles(t_stack **stack)
 {
 	int		*array;
@@ -88,14 +72,4 @@ void	check_doubles(t_stack **stack)
 		i++;
 	}
 	free(array);
-}
-
-char	*add_to_string(char *to, char *add)
-{
-	char	*del;
-
-	del = to;
-	to = ft_strjoin(to, add);
-	ft_strdel(&del);
-	return (to);
 }
