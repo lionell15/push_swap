@@ -5,71 +5,66 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lespinoz <lespinoz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 14:27:55 by lespinoz          #+#    #+#             */
-/*   Updated: 2022/03/01 14:27:57 by lespinoz         ###   ########.fr       */
+/*   Created: 2022/03/10 13:01:17 by lespinoz          #+#    #+#             */
+/*   Updated: 2022/03/10 13:01:20 by lespinoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static int	check_overflow(char *str)
+static int	ft_doubles(int num, char **argv, int i)
 {
-	if (str[0] == '-')
+	i++;
+	while (argv[i])
 	{
-		if (ft_atoi(str) > 0)
+		if (ft_atoi(argv[i]) == num)
 			return (1);
-	}
-	if (str[0] != '-')
-	{
-		if (ft_atoi(str) < 0)
-			return (1);
+		i++;
 	}
 	return (0);
 }
 
-int	check_av(char *str)
+static int	ft_isnum(char *num)
 {
 	int	i;
-	int	len;
 
 	i = 0;
-	if (str[i] == '-' && !ft_isdigit(str[i + 1]))
-		return (1);
-	if (str[i] == '-' && ft_isdigit(str[i + 1]))
+	if (num[0] == '-')
 		i++;
-	len = ft_strlen(&str[i]);
-	if (len > 10)
-		return (1);
-	while (str[i])
+	while (num[i])
 	{
-		if (!ft_isdigit(str[i]))
-			return (1);
+		if (ft_isdigit(num[i]) == 0)
+			return (0);
 		i++;
 	}
-	if (len == 10 && check_overflow(str))
-		return (1);
-	return (0);
+	return (1);
 }
 
-void	check_doubles(t_stack **stack)
+void	ft_check_args(int argc, char **argv)
 {
-	int		*array;
-	int		len;
 	int		i;
+	long	tmp;
+	char	**args;	
 
 	i = 0;
-	len = get_stack_len(*stack);
-	array = array_from_list(*stack, len);
-	quick_sort(array, 0, len - 1);
-	while (i < len - 1)
+	if (argc == 2)
+		args = ft_split(argv[1], ' ');
+	else
 	{
-		if (array[i] >= array[i + 1])
-		{
-			stack_del(stack);
-			free(array);
-			return ;
-		}
+		i = 1;
+		args = argv;
+	}
+	while (args[i])
+	{
+		tmp = ft_atoi(args[i]);
+		if (ft_isnum(args[i]) == 0)
+			ft_error("Error");
+		if (tmp < -2147483648 || tmp > 2147483647)
+			ft_error("Error");
+		if (ft_doubles(tmp, args, i))
+			ft_error("Error");
 		i++;
 	}
-	free(array);
+	if (argc == 2)
+		free_str(args);
 }

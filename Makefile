@@ -1,20 +1,21 @@
 NAME	=	push_swap
 SRCS	=	push_swap.c \
-			src/stacks.c \
-			src/checks.c \
-			src/quick_sort.c \
+			src/structs.c \
 			src/utils.c \
-			src/utils2.c \
-			src/short_solution.c \
-			src/sort_stack.c \
-			src/print_utils.c \
-			src/divide_stack.c \
-			src/push_back.c \
-			src/command_sort.c \
-			src/swap_elements.c \
-			src/swap.c \
-			src/comb.c \
-			src/comb2.c
+			src/ft_split.c \
+			src/ft_atoi.c \
+			src/sort_stacks.c \
+			src/ft_putnbr_fd.c \
+			src/ft_strlen.c \
+			src/ft_isdigit.c \
+			src/short_sort.c \
+			src/large_sort.c \
+			src/commands.c \
+			src/commands2.c \
+			src/commands3.c \
+			src/ft_putstr_fd.c \
+			src/checks.c
+
 OBJS	=	${SRCS:.c=.o}
 HEADER	=	-Iincludes
 CC		=	gcc
@@ -26,14 +27,11 @@ CFLAGS	=	-Wall -Wextra -Werror -g
 all: 		${NAME}
 
 ${NAME}:	${OBJS}
-			@make re -C ./libft
-			@$(CC) ${CFLAGS}  ${OBJS} -Llibft -lft -o ${NAME}
+			@$(CC) ${CFLAGS}  ${OBJS} -o ${NAME}
 clean:
-			@make clean -C ./libft
 			@rm -f ${OBJS} ${OBJS_B}
 
 fclean: 	clean
-			@make fclean -C ./libft
 			@rm -f ${NAME}
 
 re:			fclean all
