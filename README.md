@@ -1,3 +1,2 @@
 # push_swap
-
-NO TERMINADO
+Pass 100pts
